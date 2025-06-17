@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Student & Class Management</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <!-- Google Fonts for theme customizer -->
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Inter:wght@400;600;700&display=swap">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <header>
+    <h1 id="title-main">Student & Class Management System</h1>
+    <div class="header-controls">
+      <select id="lang-selector" title="Language">
+        <option value="en">EN</option>
+        <option value="ms">MS</option>
+        <option value="zh">中文</option>
+      </select>
+      <button id="themeCustomizerBtn" title="Theme customizer" aria-label="Theme customizer">🎨</button>
+      <button id="darkModeToggle" title="Toggle dark mode" aria-label="Toggle dark mode">🌙</button>
+    </div>
+  </header>
+  <nav>
+    <button id="tab-students" class="active" onclick="window.showTab('students')"></button>
+    <button id="tab-classes" onclick="window.showTab('classes')"></button>
+  </nav>
+  <main>
+    <section id="section-students" class="panel animated-panel">
+      <h2 id="student-list-title"></h2>
+      <form id="student-add-form" class="inline-form">
+        <input id="student-name-input" type="text" required>
+        <button type="submit"></button>
+      </form>
+      <ul id="student-list"></ul>
+    </section>
+    <section id="section-classes" class="panel animated-panel" style="display:none;">
+      <h2 id="class-mgmt-title"></h2>
+      <form id="class-add-form" class="inline-form">
+        <input id="class-name-input" type="text" required>
+        <button type="submit"></button>
+      </form>
+      <div id="class-tabs"></div>
+      <div id="class-panel"></div>
+    </section>
+    <!-- Modal for editing TP scale -->
+    <div id="tp-modal" class="tp-modal-bg" style="display:none;">
+      <div class="tp-modal animated-modal">
+        <h3><span id="tp-scale-edit-title"></span> <span id="tp-modal-subject"></span></h3>
+        <form id="tp-scale-form"></form>
+        <div style="margin-top:1em;">
+          <button id="tp-scale-save-btn" type="button"></button>
+          <button id="tp-scale-cancel-btn" type="button"></button>
+        </div>
+      </div>
+    </div>
+    <!-- Theme Customizer Modal -->
+    <div id="themeModal" class="tp-modal-bg" style="display:none;">
+      <div class="tp-modal animated-modal" style="max-width:420px">
+        <h3 id="theme-customizer-title"></h3>
+        <div class="theme-form">
+          <label>
+            <span id="theme-primary-label"></span>
+            <input type="color" id="theme-primary-picker">
+          </label>
+          <label>
+            <span id="theme-accent-label"></span>
+            <input type="color" id="theme-accent-picker">
+          </label>
+          <label>
+            <span id="theme-font-label"></span>
+            <select id="theme-font-picker">
+              <option value="Inter">Inter</option>
+              <option value="Segoe UI">Segoe UI</option>
+              <option value="Poppins">Poppins</option>
+              <option value="Roboto">Roboto</option>
+              <option value="Arial">Arial</option>
+            </select>
+          </label>
+        </div>
+        <div style="margin-top:1.5em;">
+          <button id="theme-save-btn" type="button"></button>
+          <button id="theme-cancel-btn" type="button"></button>
+        </div>
+      </div>
+    </div>
+    <!-- Toast notification -->
+    <div id="toast" class="toast"></div>
+  </main>
+  <script src="script.js"></script>
+</body>
+</html>
