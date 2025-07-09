@@ -3,24 +3,26 @@ body {
     margin: 0;
     padding: 0;
     font-family: "Segoe UI", sans-serif;
-    background: #f0f2f5;
+    background: linear-gradient(135deg, #edf2f7, #ffffff);
     color: #333;
     line-height: 1.6;
-}
-
-.container {
-    max-width: 1200px;
-    margin: 20px auto;
-    padding: 20px;
-    background: #fff;
-    border-radius: 10px;
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
 }
 
 h1 {
     text-align: center;
     color: #2d3e50;
     margin-top: 20px;
+    font-weight: bold;
+}
+
+/* Container */
+.container {
+    max-width: 1200px;
+    margin: 20px auto;
+    padding: 25px;
+    background: #fff;
+    border-radius: 12px;
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.08);
 }
 
 /* Page Switcher */
@@ -30,26 +32,28 @@ h1 {
 }
 
 #pageSwitcher button {
-    background: #0078d7;
+    background: #4A90E2;
     border: none;
-    border-radius: 5px;
-    padding: 10px 20px;
+    border-radius: 30px;
+    padding: 12px 25px;
     color: #fff;
     cursor: pointer;
     margin: 5px;
-    transition: background 0.3s;
     font-size: 1rem;
+    transition: transform 0.2s, background 0.3s;
 }
 
-#pageSwitcher button.active,
-#pageSwitcher button:hover {
-    background: #005a9e;
+#pageSwitcher button:hover,
+#pageSwitcher button.active {
+    background: #357ABD;
+    transform: scale(1.05);
 }
 
 /* Forms and Inputs */
 form {
-    margin: 10px 0;
+    margin: 15px 0;
     display: flex;
+    flex-wrap: wrap;
     align-items: center;
     justify-content: center;
     gap: 10px;
@@ -58,63 +62,72 @@ form {
 input[type="text"],
 input[type="number"],
 select {
-    padding: 10px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
+    padding: 12px;
+    border: 1px solid #ddd;
+    border-radius: 6px;
     flex: 1;
     font-size: 1rem;
     outline: none;
-    transition: border 0.2s;
-    background: #f9fafb;
+    transition: border 0.2s, box-shadow 0.2s;
+    background: #f7f9fc;
 }
 
 input[type="text"]:focus,
 input[type="number"]:focus,
 select:focus {
-    border: 1.5px solid #0078d7;
+    border: 1.5px solid #4A90E2;
+    box-shadow: 0 0 8px rgba(74, 144, 226, 0.2);
     background: #fff;
 }
 
 button {
-    padding: 10px 15px;
+    padding: 10px 20px;
     border: none;
-    border-radius: 5px;
-    background: #0078d7;
+    border-radius: 30px;
+    background: #4A90E2;
     color: #fff;
     cursor: pointer;
-    transition: background 0.3s;
+    transition: background 0.3s, transform 0.2s;
 }
 
 button:hover {
-    background: #005a9e;
+    background: #357ABD;
+    transform: scale(1.03);
 }
 
+/* Primary Buttons */
 .primary-btn,
 button[type="submit"] {
-    padding: 10px 20px;
-    background: #0078d7;
+    padding: 12px 25px;
+    background: linear-gradient(135deg, #4A90E2, #50E3C2);
     color: #fff;
     border: none;
-    border-radius: 6px;
+    border-radius: 30px;
     font-size: 1rem;
     cursor: pointer;
-    transition: background 0.2s;
+    transition: transform 0.2s, background 0.3s;
 }
 
 .primary-btn:hover,
 button[type="submit"]:hover {
-    background: #005fa3;
+    background: linear-gradient(135deg, #357ABD, #3AC6A1);
+    transform: scale(1.05);
 }
 
 /* Subject & Student Styling */
 .subject-chip {
     background: #e1ecf4;
-    color: #0078d7;
+    color: #4A90E2;
     padding: 5px 10px;
     border-radius: 15px;
-    margin: 5px;
+    margin: 4px;
     display: inline-block;
     font-size: 0.9rem;
+    transition: background 0.3s;
+}
+
+.subject-chip:hover {
+    background: #d0e3f2;
 }
 
 .subject-chip button {
@@ -126,29 +139,29 @@ button[type="submit"]:hover {
 }
 
 .student-card {
-    background: #fbfbfb;
-    padding: 15px;
-    border-radius: 8px;
+    background: #fff;
+    padding: 18px;
+    border-radius: 10px;
     margin-bottom: 15px;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
-    position: relative;
-    transition: box-shadow 0.2s;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
+    transition: transform 0.2s, box-shadow 0.2s;
 }
 
 .student-card:hover {
-    box-shadow: 0 6px 24px rgba(44, 62, 80, 0.1);
+    transform: translateY(-3px);
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1);
 }
 
 .student-card > div:first-child {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    margin-bottom: 8px;
+    margin-bottom: 10px;
 }
 
 .student-card strong {
     font-size: 1.2rem;
-    color: #0078d7;
+    color: #4A90E2;
 }
 
 .student-card span {
@@ -176,15 +189,15 @@ button[type="submit"]:hover {
 /* Subject Headers and Chapter Lists */
 .subject-header {
     background: #f1f6fb;
-    border: 1px solid #cfd8dc;
+    border: 1px solid #dfe6ed;
     border-radius: 8px;
-    padding: 10px;
+    padding: 10px 15px;
     margin: 10px 0;
-    font-weight: 600;
+    font-weight: 500;
     color: #34495e;
     display: flex;
-    align-items: center;
-    justify-content: space-between;
+    flex-direction: column;
+    gap: 8px;
 }
 
 .subject-header .avg {
@@ -211,7 +224,7 @@ button[type="submit"]:hover {
 
 .total-tp {
     font-weight: bold;
-    color: #0078d7;
+    color: #4A90E2;
 }
 
 form[onsubmit^="return addChapter"] {
@@ -224,18 +237,25 @@ form[onsubmit^="return addChapter"] {
 .chapter-list {
     list-style-type: none;
     padding: 0;
-    margin: 10px 0;
+    margin: 8px 0;
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
 }
 
 .chapter-list li {
     background: #e6f2ff;
-    margin: 5px 0;
-    padding: 8px;
+    padding: 8px 12px;
     border-radius: 5px;
     display: flex;
     align-items: center;
     justify-content: space-between;
     font-size: 0.95rem;
+    transition: background 0.3s;
+}
+
+.chapter-list li:hover {
+    background: #d0e4f5;
 }
 
 .chapter-list button {
@@ -243,12 +263,13 @@ form[onsubmit^="return addChapter"] {
     border: none;
     border-radius: 4px;
     color: #fff;
-    padding: 5px;
+    padding: 6px;
     cursor: pointer;
+    transition: background 0.3s;
 }
 
 .chapter-list button:hover {
-    background: #922b1a;
+    background: #b71c1c;
 }
 
 /* Class Tabs */
@@ -261,26 +282,34 @@ form[onsubmit^="return addChapter"] {
 .tab-btn {
     padding: 10px 15px;
     border: none;
-    border-radius: 5px;
-    background: #0078d7;
+    border-radius: 30px;
+    background: #4A90E2;
     color: #fff;
     cursor: pointer;
-    transition: background 0.3s;
+    transition: transform 0.2s, background 0.3s;
     font-size: 1rem;
 }
 
 .tab-btn:hover,
 .tab-btn.active {
-    background: #005a9e;
+    background: #357ABD;
+    transform: scale(1.05);
 }
 
 .delete-class-btn {
     background: #d32f2f;
-    margin-left: 5px;
-    padding: 5px 8px;
+    margin-left: 8px;
+    padding: 5px 10px;
     border-radius: 50%;
     font-size: 0.9rem;
+    color: #fff;
     cursor: pointer;
+    border: none;
+    transition: background 0.3s;
+}
+
+.delete-class-btn:hover {
+    background: #b71c1c;
 }
 
 /* Responsive Styles for Mobile */
@@ -291,7 +320,7 @@ form[onsubmit^="return addChapter"] {
     }
 
     h1 {
-        font-size: 1.5rem;
+        font-size: 1.8rem;
         margin-top: 10px;
     }
 
@@ -303,20 +332,21 @@ form[onsubmit^="return addChapter"] {
 
     form {
         flex-direction: column;
-        gap: 5px;
+        gap: 8px;
     }
 
     input[type="text"],
-    input[type="number"] {
+    input[type="number"],
+    select {
         width: 100%;
     }
 
     .student-card {
-        padding: 10px;
+        padding: 12px;
     }
 
     .subject-header {
-        padding: 8px;
+        padding: 8px 10px;
     }
 
     .chapter-list li {

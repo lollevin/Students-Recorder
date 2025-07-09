@@ -280,3 +280,52 @@ window.deleteClassSubject = function(className, subjIndex) {
         renderClassContent();
     }
 };
+
+// New function to add student from OCR result
+function addStudentFromOCR(name, className) {
+    if (!name || !className) return;
+    // If the class does not exist, create it
+    if (!classes[className]) {
+        classes[className] = { subjects: [], students: [] };
+    }
+    // Add the student with default subjects (if any)
+    const subjList = classes[className].subjects.map(subj => ({ name: subj, chapters: [] }));
+    classes[className].students.push({ name, subjects: subjList });
+    saveData();
+    renderStudentManager();
+    renderClassTabs();
+    renderClassContent();
+}
+
+// New function to handle image upload and processing using Tesseract.js
+function processImageOCR(file) {
+    Tesseract.recognize(file, 'eng+chi_sim', {
+        logger: m => console.log(m)
+    }).then(({ data: { text } }) => {
+        // Assume each line contains "name,class" (allowing both English and Chinese commas)
+        let lines = text.split('\n').filter(line => line.trim() !== "");
+        lines.forEach(line => {
+            // Split by comma (either , or C) or whitespace
+            let parts = line.split(/[,C\s]+/);
+            if (parts.length >= 2) {
+                let name = parts[0].trim();
+                let className = parts[1].trim();
+                addStudentFromOCR(name, className);
+            }
+        });
+        alert("Students imported from image!");
+    }).catch(err => {
+        console.error(err);
+        alert("OCR processing failed.");
+    });
+}
+
+// Add event listener for image upload button
+document.getElementById('uploadImageBtn').addEventListener('click', function() {
+    const fileInput = document.getElementById('ocrImage');
+    if (fileInput.files && fileInput.files[0]) {
+        processImageOCR(fileInput.files[0]);
+    } else {
+        alert("Please select an image file first.");
+    }
+});
